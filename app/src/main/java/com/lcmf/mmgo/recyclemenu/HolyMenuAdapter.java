@@ -1,10 +1,13 @@
 package com.lcmf.mmgo.recyclemenu;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,6 +20,7 @@ public class HolyMenuAdapter extends RecyclerView.Adapter<HolyMenuAdapter.ViewHo
 {
 
     private List<HolyMenuItem> mMenuList;
+    private Context mCtx;
 
 //    @Override
 //    public void onClick(View view) {
@@ -35,8 +39,9 @@ public class HolyMenuAdapter extends RecyclerView.Adapter<HolyMenuAdapter.ViewHo
 
     }
 
-    public HolyMenuAdapter(List<HolyMenuItem> fruitList) {
+    public HolyMenuAdapter(List<HolyMenuItem> fruitList, Context context) {
         mMenuList = fruitList;
+        this.mCtx = context;
     }
 
     @Override
@@ -49,17 +54,22 @@ public class HolyMenuAdapter extends RecyclerView.Adapter<HolyMenuAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
+        HolyMenuItem holyMenuItem = mMenuList.get(position);
+        holder.menuImage.setImageResource(holyMenuItem.getImageId());
+        holder.menuName.setText(holyMenuItem.getName());
 
-        HolyMenuItem fruit = mMenuList.get(position);
-        holder.menuImage.setImageResource(fruit.getImageId());
-        holder.menuName.setText(fruit.getName());
         //holder.menuImage.setOnClickListener(this);
         //holder.menuName.setOnClickListener(this);
 
         holder.menuImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                
+                //Toast.makeText(mCtx, "pos:" + position, Toast.LENGTH_SHORT).show();
+                try {
+                    mCtx.startActivity(new Intent(mCtx, Class.forName(holyMenuItem.getClassName())));
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
             }
         });
     }

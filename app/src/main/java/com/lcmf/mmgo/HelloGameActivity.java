@@ -1,5 +1,6 @@
 package com.lcmf.mmgo;
 
+import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
 //import com.baidu.mobstat.StatService;
@@ -46,8 +47,19 @@ public class HelloGameActivity extends AndroidApplication {
 //        initialize(new Lib004_Actor(), config);       //Actor
 
         //initialize(new GamePad(), config); //虚拟摇杆
-
-        initialize(new FastDie(), config); //勇往直前
+        Class c = null;
+        try {
+            c = Class.forName("com.lcmf.mmgo.advanbox.MyGdxGameBox2d");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        try {
+            initialize((ApplicationListener)(c.newInstance()), config); //勇往直前
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        }
 //       initialize(new ActionUser(), config); //勇往直前
         //initialize(new FirstGame(), config); //勇往直前
         //initialize(new MyGdxGameBox2d(), config);

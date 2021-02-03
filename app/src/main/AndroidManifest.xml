@@ -37,6 +37,12 @@
             <!--android:configChanges="keyboard|keyboardHidden|orientation|screenSize"></activity>-->
         <activity android:name="com.lcmf.mmgo.HelloGameActivity"></activity>
 
+        <activity android:name=".MainActivity"></activity>
+<!--        <activity android:name=".threelife.FastDieMainActivity"></activity>-->
+        <activity android:name=".threelife.AndroidFastDieLauncher"></activity>
+
+        <activity android:name=".advancestrangely.BigBrickMainLauncher"></activity>
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.youmi.android.addemo.fileProvider"

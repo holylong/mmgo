@@ -26,18 +26,22 @@ public class HolyTsMainActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         //layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         recyclerView.setLayoutManager(layoutManager);
-        HolyMenuAdapter adapter = new HolyMenuAdapter(menuItems);
+        HolyMenuAdapter adapter = new HolyMenuAdapter(menuItems, this);
         recyclerView.setAdapter(adapter);
     }
 
     private void initMenus() {
         for (int i = 0; i < 1; i++) {
-            HolyMenuItem apple = new HolyMenuItem("Apple", R.drawable.draw_btn_circle_blue);
+            HolyMenuItem apple = new HolyMenuItem("SplashActivity", R.drawable.draw_btn_circle_blue, "com.lcmf.mmgo.SplashActivity");
             menuItems.add(apple);
-            HolyMenuItem banana = new HolyMenuItem("Banana", R.drawable.draw_btn_circle_blue);
+            HolyMenuItem banana = new HolyMenuItem("HelloGameActivity", R.drawable.draw_btn_circle_blue, "com.lcmf.mmgo.HelloGameActivity");
             menuItems.add(banana);
-            HolyMenuItem orange = new HolyMenuItem("Orange", R.drawable.draw_btn_circle_blue);
+            HolyMenuItem orange = new HolyMenuItem("MainActivity", R.drawable.draw_btn_circle_blue, "com.lcmf.mmgo.MainActivity");
             menuItems.add(orange);
+            HolyMenuItem threelife = new HolyMenuItem("AndroidFastDieLauncher", R.drawable.draw_btn_circle_blue, "com.lcmf.mmgo.threelife.AndroidFastDieLauncher");
+            menuItems.add(threelife);
+            HolyMenuItem bigbrick = new HolyMenuItem("BigBrick", R.drawable.draw_btn_circle_blue, "com.lcmf.mmgo.advancestrangely.BigBrickMainLauncher");
+            menuItems.add(bigbrick);
         }
     }
 }
